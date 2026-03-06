@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveToken } from "../utils/auth";
+import { saveTokens } from "../utils/auth";
 
 function Login() {
     const BASE = import.meta.env.VITE_DJANGO_BASE_URL;
@@ -25,7 +25,7 @@ function Login() {
             });
             const data = await response.json();
             if(response.ok) {
-                saveToken(data);
+                saveTokens(data);
                 setMsg("Login successful! Redirecting...");
                 setTimeout(() => {
                     navigate("/");
@@ -75,3 +75,5 @@ function Login() {
         </div>
     )
 }
+
+export default Login;
